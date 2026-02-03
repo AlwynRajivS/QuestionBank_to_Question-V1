@@ -427,7 +427,11 @@ def fill_template(template_file, slots, meta, assessment, semester, month_durati
 
             # Question text (SAFE column)
             q_cell = row.cells[-2]
-            q_cell.text = q["text"]
+            #q_cell.text = q["text"]
+            q_cell._tc.clear_content()
+
+            p = q_cell.add_paragraph(q["text"])
+            p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
       
             for p in q_cell.paragraphs:
                 p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
